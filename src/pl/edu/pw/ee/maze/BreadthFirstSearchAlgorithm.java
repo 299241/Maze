@@ -10,7 +10,7 @@ public class BreadthFirstSearchAlgorithm implements FindingTheExitPathAlgorithm 
     private Node entrance;
     private Node exit;
 
-    public BreadthFirstSearchAlgorithm(Maze maze) {
+    BreadthFirstSearchAlgorithm(Maze maze) {
         nodes = new ArrayList<>();
         readMazeAsNodes(maze);
         readNeighbours(maze);

@@ -12,7 +12,7 @@ public class Node {
     private Node deletedWhenAdded;
     private boolean visited;
 
-    public Node(int n, int i, int j) {
+    Node(int n, int i, int j) {
         this.n = n;
         this.i = i;
         this.j = j;
@@ -21,31 +21,31 @@ public class Node {
         visited = false;
     }
 
-    public int getN() {
+    int getN() {
         return n;
     }
 
-    public int getI() {
+    int getI() {
         return i;
     }
 
-    public int getJ() {
+    int getJ() {
         return j;
     }
 
-    public List<Node> getNeighbours() {
+    List<Node> getNeighbours() {
         return neighbours;
     }
 
-    public Node getDeletedWhenAdded() {
+    Node getDeletedWhenAdded() {
         return deletedWhenAdded;
     }
 
-    public void setDeletedWhenAdded(Node deletedWhenAdded) {
+    void setDeletedWhenAdded(Node deletedWhenAdded) {
         this.deletedWhenAdded = deletedWhenAdded;
     }
 
-    public boolean isVisited() {
+    boolean isVisited() {
         return visited;
     }
 

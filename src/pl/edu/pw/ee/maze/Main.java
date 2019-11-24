@@ -32,7 +32,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void showMaze(Maze maze) {
+    private static void showMaze(Maze maze) {
         double prevX = 0;
         double prevY = 0;
         double prevRowY = 0;

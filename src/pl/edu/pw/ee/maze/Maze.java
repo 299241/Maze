@@ -19,7 +19,7 @@ public class Maze {
     private int entrance;
     private int exit;
 
-    public Maze(int height, int width) {
+    Maze(int height, int width) {
         if (height < 1 || width < 1) {
             throw new IllegalArgumentException("Niedozwolone wymiary labiryntu: " + height + "x" + width + "." +
                     "Każdy z wymiarów musi być większy lub równy 1.");
@@ -87,23 +87,23 @@ public class Maze {
         }
     }
 
-    public char get(int i, int j) {
+    char get(int i, int j) {
         return maze[i][j];
     }
 
-    public int getGridHeight() {
+    int getGridHeight() {
         return gridHeight;
     }
 
-    public int getGridWidth() {
+    int getGridWidth() {
         return gridWidth;
     }
 
-    public int getEntrance() {
+    int getEntrance() {
         return entrance;
     }
 
-    public int getExit() {
+    int getExit() {
         return exit;
     }
 
