@@ -15,7 +15,9 @@ public class Main extends Application {
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
-        Maze maze = new Maze(5, 5);
+        Maze maze = new Maze(10, 5);
+        FindingTheExitPathAlgorithm bfs = new BreadthFirstSearchAlgorithm(maze);
+        System.out.println(bfs.findTheExitPath());
 
         System.out.println(maze);
 
@@ -41,7 +43,7 @@ public class Main extends Application {
             for (int j = 0; j < maze.getGridWidth(); j++) {
                 StackPane s = new StackPane();
 
-                Integer pos = (j + 1) / 2 + ((maze.getGridWidth() - 1) / 2 * (i - 1) / 2);
+                Integer pos = (j + 1) / 2 + ((maze.getGridWidth() - 1) / 2 * (i - 1) / 2) - 1;
                 Text t = new Text(pos.toString());
                 t.setFont(Font.font(size));
 
