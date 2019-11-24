@@ -14,7 +14,8 @@ public class Maze {
 
     public Maze(int height, int width) {
         if (height < 1 || width < 1) {
-            throw new IllegalArgumentException("Niedozwolone wymiary labiryntu: " + height + "x" + width + ". Każdy z wymiarów musi być większy lub równy 1.");
+            throw new IllegalArgumentException("Niedozwolone wymiary labiryntu: " + height + "x" + width + "." +
+                    "Każdy z wymiarów musi być większy lub równy 1.");
         } else {
             this.maze = RecursiveDivisionAlgorithm.createMaze(2 * height + 1, 2 * width + 1);
             this.gridWidth = maze[0].length;
