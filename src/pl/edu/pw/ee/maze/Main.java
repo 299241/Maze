@@ -15,12 +15,13 @@ public class Main extends Application {
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
-        //Maze maze = new Maze(5, 5);
-        Maze maze = new Maze("resources/testingData");
+        Maze maze = new Maze(5, 5);
+        //Maze maze = new Maze("resources/testingData");
 
-        FindingTheExitPathAlgorithm bfs = new BreadthFirstSearchAlgorithm(maze);
-        System.out.println(bfs.findTheExitPath());
-        System.out.println(maze);
+        MazeAsGraph mazeAsGraph = new MazeAsGraph(maze);
+        System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
+        System.out.println(TremauxAlgorithm.findTheExitPath(mazeAsGraph));
+
         showMaze(maze);
         launch(args);
     }
@@ -86,4 +87,5 @@ public class Main extends Application {
             prevY += prevRowY;
         }
     }
+
 }

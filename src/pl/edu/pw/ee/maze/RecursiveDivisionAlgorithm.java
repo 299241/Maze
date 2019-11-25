@@ -2,9 +2,9 @@ package pl.edu.pw.ee.maze;
 
 import java.util.Random;
 
-class RecursiveDivisionAlgorithm {
+public class RecursiveDivisionAlgorithm {
 
-    static char[][] createMaze(int gridHeight, int gridWidth) {
+    public static char[][] createMaze(int gridHeight, int gridWidth) {
         char[][] maze = new char[gridHeight][gridWidth];
         createBorder(maze, gridHeight, gridWidth);
         divide(maze, 0, 0, gridHeight, gridWidth, chooseOrientation(gridHeight, gridWidth));
@@ -100,4 +100,5 @@ class RecursiveDivisionAlgorithm {
     private static int rand(int min, int max) {
         return new Random().nextInt(max - min + 1) + min;
     }
+
 }

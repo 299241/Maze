@@ -8,18 +8,16 @@ import java.util.ArrayList;
 
 public class Maze {
 
-    final static char WALL = '+';
-    final static char PASSAGE = '0';
-    final static char ENTRANCE = '#';
-    final static char EXIT = '*';
+    public final static char WALL = '+';
+    public final static char PASSAGE = '0';
+    public final static char ENTRANCE = '#';
+    public final static char EXIT = '*';
 
     private char[][] maze;
     private int gridWidth;
     private int gridHeight;
-    private int entrance;
-    private int exit;
 
-    Maze(int height, int width) {
+    public Maze(int height, int width) {
         if (height < 1 || width < 1) {
             throw new IllegalArgumentException("Niedozwolone wymiary labiryntu: " + height + "x" + width + "." +
                     "Każdy z wymiarów musi być większy lub równy 1.");
@@ -27,26 +25,13 @@ public class Maze {
             this.maze = RecursiveDivisionAlgorithm.createMaze(2 * height + 1, 2 * width + 1);
             this.gridWidth = maze[0].length;
             this.gridHeight = maze.length;
-            this.entrance = findEntranceAndExit(0);
-            this.exit =findEntranceAndExit(gridHeight-1);
         }
     }
 
-    Maze(String filePath) {
+    public Maze(String filePath) {
         this.maze = readFromFile(filePath);
         this.gridWidth = maze[0].length;
         this.gridHeight = maze.length;
-        this.entrance = findEntranceAndExit(0);
-        this.exit =findEntranceAndExit(gridHeight-1);
-    }
-
-    private int findEntranceAndExit(int row) {
-        for (int j = 0; j < gridWidth; j++) {
-            if (maze[row][j] == '#' || maze[row][j] == '*') {
-                return j;
-            }
-        }
-        return -1;
     }
 
     private char[][] readFromFile(String filePath) {
@@ -87,24 +72,16 @@ public class Maze {
         }
     }
 
-    char get(int i, int j) {
+    public char get(int i, int j) {
         return maze[i][j];
     }
 
-    int getGridHeight() {
+    public int getGridHeight() {
         return gridHeight;
     }
 
-    int getGridWidth() {
+    public int getGridWidth() {
         return gridWidth;
-    }
-
-    int getEntrance() {
-        return entrance;
-    }
-
-    int getExit() {
-        return exit;
     }
 
     @Override
@@ -118,4 +95,5 @@ public class Maze {
         }
         return str.toString();
     }
+
 }

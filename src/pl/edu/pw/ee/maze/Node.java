@@ -1,6 +1,6 @@
 package pl.edu.pw.ee.maze;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Node {
@@ -10,57 +10,63 @@ public class Node {
     private int j;
     private List<Node> neighbours;
     private Node deletedWhenAdded;
-    private boolean visited;
+    private int marked;
 
-    Node(int n, int i, int j) {
+    public Node(int n, int i, int j) {
         this.n = n;
         this.i = i;
         this.j = j;
-        this.neighbours = new LinkedList<>();
+        this.neighbours = new ArrayList<>();
         deletedWhenAdded = null;
-        visited = false;
+        marked = 0;
     }
 
-    int getN() {
+    public int getN() {
         return n;
     }
 
-    int getI() {
+    public int getI() {
         return i;
     }
 
-    int getJ() {
+    public int getJ() {
         return j;
     }
 
-    List<Node> getNeighbours() {
+    public List<Node> getNeighbours() {
         return neighbours;
     }
 
-    Node getDeletedWhenAdded() {
+    public Node getDeletedWhenAdded() {
         return deletedWhenAdded;
     }
 
-    void setDeletedWhenAdded(Node deletedWhenAdded) {
+    public void setDeletedWhenAdded(Node deletedWhenAdded) {
         this.deletedWhenAdded = deletedWhenAdded;
     }
 
-    boolean isVisited() {
-        return visited;
+    public int getMarked() {
+        return marked;
     }
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public void setMarked(int marked) {
+        if (marked >= 0 && marked <= 2) {
+            this.marked = marked;
+        } else {
+            throw new IllegalArgumentException("Niedozwolony parametr visited: " + marked +
+                    ". Parametr visited może przyjmować liczby od 0 do 2.");
+        }
     }
 
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append("(n = ").append(n).append(", neighbours = ");
+        str.append("(n = ").append(getN()).append(", neighbours = ");
         neighbours.forEach((x) -> str.append(x.getN()).append(", "));
         str.append(", del = ");
         str.append(deletedWhenAdded);
         str.append(")");
         return str.toString();
     }
+
 }
