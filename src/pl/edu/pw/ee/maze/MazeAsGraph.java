@@ -5,13 +5,11 @@ import java.util.List;
 
 public class MazeAsGraph {
 
-    Maze maze;
     private List<Node> nodes;
     private Node entrance;
     private Node exit;
 
     public MazeAsGraph(Maze maze) {
-        this.maze = maze;
         this.nodes = new ArrayList<>();
         readMazeAsNodes(maze);
         readNeighbours(maze);
