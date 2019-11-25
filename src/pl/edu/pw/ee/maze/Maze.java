@@ -32,7 +32,7 @@ public class Maze {
         }
     }
 
-    public Maze(String filePath) {
+    Maze(String filePath) {
         this.maze = readFromFile(filePath);
         this.gridWidth = maze[0].length;
         this.gridHeight = maze.length;

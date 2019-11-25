@@ -66,19 +66,20 @@ public class BreadthFirstSearchAlgorithm implements FindingTheExitPathAlgorithm 
             if (first == exit) {
                 str.append(first.getN());
                 str.append(" -> ");
-                for(int i = 0; i<10; i++) {
+                while(first != entrance) {
                     first = first.getDeletedWhenAdded();
                     str.append(first.getN());
                     str.append(" -> ");
                 }
+                str.delete(str.length()-4, str.length()-1);
                 break;
             }
             first.getNeighbours().forEach((x) -> x.setDeletedWhenAdded(queue.getFirst()));
+            first.getNeighbours().forEach((x) -> x.getNeighbours().remove(queue.getFirst()));
             queue.addAll(first.getNeighbours());
             queue.removeFirst();
         }
 
         return str.toString();
     }
-
 }

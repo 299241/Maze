@@ -15,12 +15,12 @@ public class Main extends Application {
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
-        Maze maze = new Maze(10, 5);
+        //Maze maze = new Maze(5, 5);
+        Maze maze = new Maze("resources/testingData");
+
         FindingTheExitPathAlgorithm bfs = new BreadthFirstSearchAlgorithm(maze);
         System.out.println(bfs.findTheExitPath());
-
         System.out.println(maze);
-
         showMaze(maze);
         launch(args);
     }
@@ -43,8 +43,8 @@ public class Main extends Application {
             for (int j = 0; j < maze.getGridWidth(); j++) {
                 StackPane s = new StackPane();
 
-                Integer pos = (j + 1) / 2 + ((maze.getGridWidth() - 1) / 2 * (i - 1) / 2) - 1;
-                Text t = new Text(pos.toString());
+                int pos = (j + 1) / 2 + ((maze.getGridWidth() - 1) / 2 * (i - 1) / 2) - 1;
+                Text t = new Text(Integer.toString(pos));
                 t.setFont(Font.font(size));
 
                 Rectangle r = new Rectangle();
@@ -63,13 +63,13 @@ public class Main extends Application {
                 if (i % 2 == 0 && j % 2 == 0) {
                     r.setHeight(size);
                     r.setWidth(size);
-                } else if (i % 2 == 0 && j % 2 != 0) {
+                } else if (i % 2 == 0) {
                     r.setHeight(size);
                     r.setWidth(size * 3);
-                } else if (i % 2 != 0 && j % 2 == 0) {
+                } else if (j % 2 == 0) {
                     r.setHeight(size * 3);
                     r.setWidth(size);
-                } else if (i % 2 != 0 && j % 2 != 0) {
+                } else {
                     r.setHeight(size * 3);
                     r.setWidth(size * 3);
                     s.getChildren().add(t);
