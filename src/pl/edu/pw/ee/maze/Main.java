@@ -19,7 +19,7 @@ public class Main extends Application {
         //Maze maze = new Maze("resources/testingData");
 
         MazeAsGraph mazeAsGraph = new MazeAsGraph(maze);
-        System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
+        //System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
         System.out.println(TremauxAlgorithm.findTheExitPath(mazeAsGraph));
 
         showMaze(maze);
