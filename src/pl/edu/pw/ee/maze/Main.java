@@ -15,11 +15,11 @@ public class Main extends Application {
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
-        Maze maze = new Maze(5, 5);
+        Maze maze = new Maze(15, 15);
         //Maze maze = new Maze("resources/testingData");
 
         MazeAsGraph mazeAsGraph = new MazeAsGraph(maze);
-        //System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
+        System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
         System.out.println(TremauxAlgorithm.findTheExitPath(mazeAsGraph));
 
         showMaze(maze);

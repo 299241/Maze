@@ -12,37 +12,30 @@ public class TremauxAlgorithm {
         Node node = maze.getEntrance();
         node.setMarked(1);
 
-        do {
-            if (node.getNeighbours().size() > 1) {
-                List<Node> unmarkedPaths = unmarkedPaths(node.getNeighbours());
-                if (unmarkedPaths.size() > 0) {
-                    Node next = node.getNeighbours().get(rand.nextInt(unmarkedPaths.size()));
-                    next.setDeletedWhenAdded(node);
-                    node = next;
-                    node.setMarked(1);
-                } else {
-                    while (node.getNeighbours().size() > 1) {
-                        node.setMarked(2);
-                        node = node.getDeletedWhenAdded();
-                    }
-                }
-            } else {
-                Node next = node.getNeighbours().get(0);
+        while (node != maze.getExit()) {
+            List<Node> unmarkedPaths = countUnmarkedPaths(node.getNeighbours());
+            if (unmarkedPaths.size() > 0) {
+                node.setMarked(1);
+                Node next = unmarkedPaths.get(rand.nextInt(unmarkedPaths.size()));
                 next.setDeletedWhenAdded(node);
                 node = next;
-                node.setMarked(1);
+            } else {
+                node.setMarked(2);
+                node = node.getDeletedWhenAdded();
             }
-        } while (node != maze.getExit());
+        }
 
         while (node != maze.getEntrance()) {
             exitPath.append(node.getN());
             exitPath.append(" -> ");
             node = node.getDeletedWhenAdded();
         }
+        exitPath.append(node.getN());
+
         return exitPath.toString();
     }
 
-    private static List<Node> unmarkedPaths(List<Node> neighbours) {
+    private static List<Node> countUnmarkedPaths(List<Node> neighbours) {
         List<Node> unmarkedPaths = new ArrayList<>();
         for (Node x : neighbours) {
             if (x.getMarked() == 0) {
