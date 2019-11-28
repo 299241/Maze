@@ -16,7 +16,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         //Maze maze = new Maze(15, 15);
-        Maze maze = new Maze("resources/maze5x5");
+        Maze maze = new Maze("resources/maze25x25");
         MazeAsGraph mazeAsGraph = new MazeAsGraph(maze);
 
         System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
