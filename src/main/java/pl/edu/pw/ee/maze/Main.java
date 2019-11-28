@@ -15,8 +15,8 @@ public class Main extends Application {
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
-        Maze maze = new Maze(15, 15);
-        //Maze maze = new Maze("resources/testingData");
+        //Maze maze = new Maze(15, 15);
+        Maze maze = new Maze("resources/testingData2");
 
         MazeAsGraph mazeAsGraph = new MazeAsGraph(maze);
         System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
