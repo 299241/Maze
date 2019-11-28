@@ -1,11 +1,12 @@
 package pl.edu.pw.ee.maze;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class BreadthFirstSearchAlgorithm {
 
-    public static String findTheExitPath(MazeAsGraph maze) {
-        StringBuilder exitPath = new StringBuilder();
+    public static List<Node> findTheExitPath(MazeAsGraph maze) {
+        LinkedList<Node> exitPath = new LinkedList<>();
         LinkedList<Node> queue = new LinkedList<>();
         queue.add(maze.getEntrance());
 
@@ -13,14 +14,11 @@ public class BreadthFirstSearchAlgorithm {
             Node first = queue.getFirst();
 
             if (first == maze.getExit()) {
-                exitPath.append(first.getN());
-                exitPath.append(" -> ");
+                exitPath.addFirst(first);
                 while (first != maze.getEntrance()) {
                     first = first.getDeletedWhenAdded();
-                    exitPath.append(first.getN());
-                    exitPath.append(" -> ");
+                    exitPath.addFirst(first);
                 }
-                exitPath.delete(exitPath.length() - 4, exitPath.length() - 1);
                 break;
             }
             first.getNeighbours().forEach((x) -> x.setDeletedWhenAdded(queue.getFirst()));
@@ -29,7 +27,7 @@ public class BreadthFirstSearchAlgorithm {
             queue.removeFirst();
         }
 
-        return exitPath.toString();
+        return exitPath;
     }
 
 }

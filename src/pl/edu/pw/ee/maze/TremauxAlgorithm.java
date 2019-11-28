@@ -1,17 +1,18 @@
 package pl.edu.pw.ee.maze;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 public class TremauxAlgorithm {
-    public static String findTheExitPath(MazeAsGraph maze) {
-        StringBuilder exitPath = new StringBuilder();
+
+    public static List<Node> findTheExitPath(MazeAsGraph maze) {
+        LinkedList<Node> exitPath = new LinkedList<>();
 
         Random rand = new Random();
+
         Node node = maze.getEntrance();
         node.setMarked(1);
-
         while (node != maze.getExit()) {
             List<Node> unmarkedPaths = countUnmarkedPaths(node.getNeighbours());
             if (unmarkedPaths.size() > 0) {
@@ -26,17 +27,16 @@ public class TremauxAlgorithm {
         }
 
         while (node != maze.getEntrance()) {
-            exitPath.append(node.getN());
-            exitPath.append(" -> ");
+            exitPath.addFirst(node);
             node = node.getDeletedWhenAdded();
         }
-        exitPath.append(node.getN());
+        exitPath.addFirst(node);
 
-        return exitPath.toString();
+        return exitPath;
     }
 
     private static List<Node> countUnmarkedPaths(List<Node> neighbours) {
-        List<Node> unmarkedPaths = new ArrayList<>();
+        List<Node> unmarkedPaths = new LinkedList<>();
         for (Node x : neighbours) {
             if (x.getMarked() == 0) {
                 unmarkedPaths.add(x);

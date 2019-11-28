@@ -61,11 +61,7 @@ public class Node {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append("(n = ").append(getN()).append(", neighbours = ");
-        neighbours.forEach((x) -> str.append(x.getN()).append(", "));
-        str.append(", del = ");
-        str.append(deletedWhenAdded);
-        str.append(")");
+        str.append(n);
         return str.toString();
     }
 

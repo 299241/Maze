@@ -75,6 +75,7 @@ public class Main extends Application {
                     r.setWidth(size * 3);
                     s.getChildren().add(t);
                 }
+
                 r.setStroke(Color.GRAY);
                 r.setStrokeWidth(0.1);
                 s.setLayoutX(prevX);
