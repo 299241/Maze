@@ -60,9 +60,7 @@ public class Node {
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(n);
-        return str.toString();
+        return String.valueOf(n);
     }
 
 }
