@@ -15,13 +15,20 @@ public class Main extends Application {
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
-        //Maze maze = new Maze(5, 5);
+        //labirynt o podanych wymiarach wygenerowany przez algorytm rekurencyjnego podziału
+        Maze mazeRecursive = new Maze(5, 5);
+
+        //labirynt wczytany z pliku
         Maze maze = new Maze("resources/testingData1");
+
+        //zapisane labiryntu jako grafu
         MazeAsGraph mazeAsGraph = new MazeAsGraph(maze);
 
+        //wypisanie na konsole sciezek wyjscia otrzymanych z poszczegolnych algorytmow
         System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
         System.out.println(TremauxAlgorithm.findTheExitPath(mazeAsGraph));
 
+        //wyswietlenie graficzne (przy pomocy JavaFX) labiryntu w nowym oknie
         showMaze(maze);
         launch(args);
     }
