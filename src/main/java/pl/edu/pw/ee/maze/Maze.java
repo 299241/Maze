@@ -36,6 +36,9 @@ public class Maze {
 
     private char[][] readFromFile(String filePath) {
         ArrayList<String> list = new ArrayList<>();
+        boolean isEntrance = false;
+        boolean isExit = false;
+
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
@@ -52,12 +55,41 @@ public class Maze {
             for (int i = 0; i < list.size(); i++) {
                 for (int j = 0; j < list.get(i).length(); j++) {
                     tmp[i][j] = list.get(i).charAt(j);
+                    if (j % 2 != 0 && tmp[i][j] == ENTRANCE) {
+                        isEntrance = true;
+                    } else if (j % 2 != 0 && tmp[i][j] == EXIT) {
+                        isExit = true;
+                    }
                 }
             }
         } catch (IndexOutOfBoundsException e) {
             System.err.println(filePath + " (Błąd wczytywania z pliku. Niezgodna liczba znaków w liniach!)");
             System.exit(2);
         }
+
+        if (!isEntrance || !isExit) {
+            if (!isEntrance) {
+                System.err.println(filePath + " (Błąd wczytywania z pliku. Brak wejścia do labiryntu!)");
+            }
+            if (!isExit) {
+                System.err.println(filePath + " (Błąd wczytywania z pliku. Brak wyjścia z labiryntu!)");
+            }
+            System.exit(3);
+        }
+
+        for (int i = 1; i < tmp.length - 1; i++) {
+            int countPassage = 0;
+            for (int j = 1; j < tmp[0].length - 1; j++) {
+                if (tmp[i][j] == PASSAGE) {
+                    countPassage++;
+                }
+            }
+            if (countPassage == 0) {
+                System.err.println(filePath + " (Błąd wczytywania z pliku. Nie istnieje scieżka wyjścia!)");
+                System.exit(4);
+            }
+        }
+
 
         return tmp;
     }

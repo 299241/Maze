@@ -8,11 +8,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FindTheExitPathAlgorithmTest {
+
     @Test
-    public void findTheExitPath() throws FileNotFoundException {
+    public void findTheExitPaths() throws FileNotFoundException {
         long start, end;
         PrintWriter testResult = new PrintWriter("resources/testResult.csv");
-        List<Node> tmp = new LinkedList<>();
+        List<Node> tmp;
 
         testResult.println("dim;timeBFS;sizeBFS;timeT;sizeT;");
 
@@ -31,4 +32,5 @@ public class FindTheExitPathAlgorithmTest {
         }
         testResult.close();
     }
+
 }

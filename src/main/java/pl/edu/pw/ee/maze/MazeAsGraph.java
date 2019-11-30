@@ -20,10 +20,10 @@ public class MazeAsGraph {
             for (int j = 1; j < maze.getGridWidth(); j += 2) {
                 int pos = (j + 1) / 2 + ((maze.getGridWidth() - 1) / 2 * (i - 1) / 2) - 1;
                 nodes.add(pos, new Node(pos, i, j));
-
                 if (maze.get(i - 1, j) == Maze.ENTRANCE) {
                     entrance = nodes.get(pos);
-                } else if (maze.get(i + 1, j) == Maze.EXIT) {
+                }
+                if (maze.get(i + 1, j) == Maze.EXIT) {
                     exit = nodes.get(pos);
                 }
             }

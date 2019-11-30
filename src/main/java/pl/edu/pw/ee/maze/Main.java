@@ -15,8 +15,8 @@ public class Main extends Application {
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
-        //Maze maze = new Maze(15, 15);
-        Maze maze = new Maze("resources/maze25x25");
+        Maze maze = new Maze(5, 5);
+        //Maze maze = new Maze("resources/testingData1");
         MazeAsGraph mazeAsGraph = new MazeAsGraph(maze);
 
         System.out.println(BreadthFirstSearchAlgorithm.findTheExitPath(mazeAsGraph));
@@ -27,7 +27,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("Maze");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

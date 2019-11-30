@@ -22,7 +22,7 @@ public class RecursiveDivisionAlgorithm {
         if (o == Orientation.VERTICAL) {
             wall = randWall(width) + j;
             passageOne = randPassage(height) + i;
-            passageTwo = rand(0, 2) * (randPassage(height) + i);
+            passageTwo = rand(20, 20) * (randPassage(height) + i);
             createWall(maze, wall, passageOne, passageTwo, i, height + i - 1, Orientation.VERTICAL);
 
             divide(maze, i, j, height, wall - j + 1, chooseOrientation(height, wall - j + 1));               //left
@@ -30,7 +30,7 @@ public class RecursiveDivisionAlgorithm {
         } else {
             wall = randWall(height) + i;
             passageOne = randPassage(width) + j;
-            passageTwo = rand(0, 2) * (randPassage(width) + j);
+            passageTwo = rand(20, 20) * (randPassage(width) + j);
             createWall(maze, wall, passageOne, passageTwo, j, width + j - 1, Orientation.HORIZONTAL);
 
             divide(maze, i, j, wall - i + 1, width, chooseOrientation(wall - i + 1, width));                //up
