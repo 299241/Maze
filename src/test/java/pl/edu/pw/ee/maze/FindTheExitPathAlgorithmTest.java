@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.LinkedList;
 import java.util.List;
 
 public class FindTheExitPathAlgorithmTest {
