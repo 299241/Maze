@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class FindTheExitPathAlgorithmTest {
+public class FindTheExitPathAlgorithmsTest {
 
     @Test
     public void findTheExitPaths() throws FileNotFoundException {
